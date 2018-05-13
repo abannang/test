@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('Pull container image') {
             steps {
+                sh "sudo chown root:jenkins /run/docker.sock"
                 sh 'sudo docker pull maven:3-alpine'
             }
         }
