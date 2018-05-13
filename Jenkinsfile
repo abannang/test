@@ -1,7 +1,7 @@
 pipeline {
     agent { label 'jenkinslave' }
     stages {
-        stage('Pull dependencies') {
+        stage('Fetch dependencies') {
             steps {
                 sh 'sudo docker pull node:latest'
           }
