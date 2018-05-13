@@ -2,7 +2,9 @@ pipeline {
     agent { label 'jenkinslave' }
     stages {
         stage('Pull container image') {
-            sh 'sudo docker pull maven:3-alpine'
+            steps {
+                sh 'sudo docker pull maven:3-alpine'
+            }
         }
         stage('Front-end') {
             agent {
