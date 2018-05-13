@@ -10,7 +10,7 @@ pipeline {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
             steps {
-            sh "docker build . -t customnode:1"
+            sh "sudo docker build . -t customnode:1"
             }    
         }
         stage('Test image') {
