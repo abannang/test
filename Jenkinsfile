@@ -18,7 +18,8 @@ pipeline {
             //}
             //withCredentials([usernamePassword(credentialsId: '1db5f8f5-dc39-47a6-9431-0735c4f42afe', passwordVariable: '5hMC_#y>tzy+:CZfwEEq', usernameVariable: "abannang/abhiram.annangi@oracle.com")]) {
             sh "sudo docker login -u 'abannang/abhiram.annangi@oracle.com' -p '5hMC_#y>tzy+:CZfwEEq' iad.ocir.io"
-            sh 'sudo docker push node:latest'
+            sh "sudo docker tag node:latest iad.ocir.io/abannang/node:latest"
+            sh 'sudo docker push iad.ocir.io/abannang/node:latest'
             
            }
          }      
