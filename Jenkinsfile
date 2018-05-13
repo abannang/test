@@ -13,9 +13,11 @@ pipeline {
         }
         stage('push images') {
         docker.withRegistry('iad.ocir.io', '1db5f8f5-dc39-47a6-9431-0735c4f42afe') {
-        }
+        
          steps {
                 sh 'sudo docker push iad.ocir.io/abannang/project02/node:latest'
-      }
+          }
+        }
+      }      
     }
 }
