@@ -1,15 +1,8 @@
 pipeline {
     agent { label 'docker' }
     stages {
-        stage('Back-end') {
-            agent {
-                docker { 
-                    image 'maven:3-alpine'
-                       }
-            }
-            steps {
-                sh 'mvn --version'
-            }
+        stage('Pull container image') {
+            sh 'sudo docker pull maven:3-alpine'
         }
         stage('Front-end') {
             agent {
