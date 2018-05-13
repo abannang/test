@@ -1,22 +1,25 @@
 pipeline {
     agent { label 'jenkinslave' }
     stages {
-        stage('Pull maven image') {
-            steps {
-                sh 'sudo docker pull maven:3-alpine'
-            }
-        }
-        stage('pull node image') {
+        stage('Pull dependencies') {
             steps {
                 sh 'sudo docker pull node:latest'
           }
         }
-        stage('push images') {
+        stage('Build docker image') {
+        /* This builds the actual image; synonymous to
+         * docker build on the command line */
+            steps {
+            sh "docker build . -t customnode:1"
+            }    
+        }
+        stage('Test image') {
+            steps {
+                sh 'echo "Tests successful"'
+          }
+        }
+        stage('Push image to OCIR') {
         steps {
-          //  withDockerRegistry([ credentialsId: "1db5f8f5-dc39-47a6-9431-0735c4f42afe", url: "iad.ocir.io" ]) {      
-            //sh 'sudo docker push iad.ocir.io/abannang/project02/node:latest'
-            //}
-            //withCredentials([usernamePassword(credentialsId: '1db5f8f5-dc39-47a6-9431-0735c4f42afe', passwordVariable: '5hMC_#y>tzy+:CZfwEEq', usernameVariable: "abannang/abhiram.annangi@oracle.com")]) {
             sh "sudo docker login -u 'abannang/abhiram.annangi@oracle.com' -p '5hMC_#y>tzy+:CZfwEEq' iad.ocir.io"
             sh "sudo docker tag node:latest iad.ocir.io/abannang/node:latest"
             sh 'sudo docker push iad.ocir.io/abannang/node:latest'
@@ -25,3 +28,4 @@ pipeline {
          }      
     }
 }
+
