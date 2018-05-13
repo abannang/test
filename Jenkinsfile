@@ -7,12 +7,9 @@ pipeline {
             }
         }
         stage('build node') {
-            agent {
-                docker { image 'node:7-alpine' }
-            }
             steps {
-                sh 'node --version'
-            }
+                sh 'sudo docker pull maven:3-alpine'
+          }
         }
     }
 }
