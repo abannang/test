@@ -7,7 +7,7 @@ pipeline {
                 sh 'sudo docker pull maven:3-alpine'
             }
         }
-        stage('Front-end') {
+        stage('build node') {
             agent {
                 docker { image 'node:7-alpine' }
             }
