@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'docker' }
+    agent { label 'jenkinslave' }
     stages {
         stage('Pull container image') {
             sh 'sudo docker pull maven:3-alpine'
