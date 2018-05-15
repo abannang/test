@@ -5,14 +5,14 @@ pipeline {
         /* This stage pulls the latest node image from
            Dockerhub */
             steps {
-                sh 'sudo docker pull node:latest'
+                sh 'sudo docker pull nginx:latest'
           }
         }
         stage('Build docker image') {
         /* This stage builds the actual image; synonymous to
            docker build on the command line */
             steps {
-            sh "sudo docker build . -t customnode:1"
+            sh "sudo docker build . -t customnginx:1"
             }    
         }
         stage('Test image') {
@@ -27,8 +27,8 @@ pipeline {
             docker image to our private Registry*/
         steps {
             sh "sudo docker login -u 'abannang/abhiram.annangi@oracle.com' -p '5hMC_#y>tzy+:CZfwEEq' iad.ocir.io"
-            sh "sudo docker tag node:latest iad.ocir.io/abannang/node:latest"
-            sh 'sudo docker push iad.ocir.io/abannang/node:latest'
+            sh "sudo docker tag nginx:latest iad.ocir.io/abannang/nginx:latest"
+            sh 'sudo docker push iad.ocir.io/abannang/nginx:latest'
             
            }
          }      
