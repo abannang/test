@@ -27,8 +27,8 @@ pipeline {
             docker image to our private Registry*/
         steps {
             sh "sudo docker login -u 'abannang/abhiram.annangi@oracle.com' -p '5hMC_#y>tzy+:CZfwEEq' iad.ocir.io"
-            sh "sudo docker tag customnginx:1 iad.ocir.io/abannang/nginx:latest"
-            sh 'sudo docker push iad.ocir.io/abannang/nginx:latest'
+            sh "sudo docker tag customnginx:1 iad.ocir.io/abannang/nginx:custom"
+            sh 'sudo docker push iad.ocir.io/abannang/nginx:custom'
             
            }
          }      
