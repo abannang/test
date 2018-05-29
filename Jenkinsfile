@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'jenkinslave' }
+    agent { label 'k8s' }
     stages {
         stage('Fetch dependencies') {
         /* This stage pulls the latest node image from
